@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Book Exchange{% endblock %}</title>
+		<link href="{% static 'style.css' %}" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="nav-item">
+				<a class="nav-link" href="{% url 'index' %}">HOME</a>
+			</div>
+			<div class="nav-item">
+				<a class="nav-link" href="{% url 'shelf' %}">SHELF</a>
+			</div>
+			<!-- <div class="nav-item">
+				<a class="nav-link" href="{% url 'borrowed' %}"> BORROWED </a>
+			</div>
+			<div class="nav-item">
+				<a class="nav-link" href="{% url 'lent' %}"> LENT </a>
+			</div> -->
+		</div>
+		<!-- line to inject child components -->
+		{% block body %} {% endblock %}
+	</body>
+</html>

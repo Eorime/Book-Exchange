@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from bookExchange.views import index 
+from bookExchange.views import index, lent, borrowed, shelf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", index, name="home" )
+    path("", index, name="index" ),
+    path("borrowed", borrowed, name="borrowed"),
+    path("lent", lent, name="lent"),
+    path("shelf", shelf, name="shelf")
 ]

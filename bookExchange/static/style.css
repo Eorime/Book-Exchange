@@ -1,3 +1,27 @@
 body {
-	background-color: red;
+	font-family: sans-serif;
+	padding: 20px;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+.nav-item {
+	font-weight: bold;
+	color: gray;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: inherit;
+	transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+	color: rgb(28, 27, 27);
 }
