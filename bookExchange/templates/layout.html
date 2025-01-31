@@ -9,6 +9,7 @@
 		<link href="{% static 'style.css' %}" rel="stylesheet" />
 	</head>
 	<body>
+		<div class="mouse-circle"></div>
 		<div class="navbar">
 			<div class="nav-item">
 				<a class="nav-link" href="{% url 'index' %}">HOME</a>
@@ -16,14 +17,9 @@
 			<div class="nav-item">
 				<a class="nav-link" href="{% url 'shelf' %}">SHELF</a>
 			</div>
-			<!-- <div class="nav-item">
-				<a class="nav-link" href="{% url 'borrowed' %}"> BORROWED </a>
-			</div>
-			<div class="nav-item">
-				<a class="nav-link" href="{% url 'lent' %}"> LENT </a>
-			</div> -->
 		</div>
 		<!-- line to inject child components -->
+		<script src="{% static 'scripts/scripts.js' %}"></script>
 		{% block body %} {% endblock %}
 	</body>
 </html>
