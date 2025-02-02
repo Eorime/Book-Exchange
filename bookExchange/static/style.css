@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 
+html {
+	cursor: none;
+}
+
 body {
 	font-family: "Raleway", sans-serif;
 	overflow-x: hidden;
@@ -8,30 +12,38 @@ body {
 }
 
 .mouse-circle {
-	position: absolute;
+	position: relative;
 	border-radius: 50%;
 	background-color: rgb(101, 101, 247);
 	pointer-events: none;
 	width: 40px;
 	height: 40px;
+
+	@media screen and (max-width: 1024px) {
+		display: none;
+	}
 }
 
 .navbar {
-	position: fixed;
-	right: 20px;
+	position: absolute;
+	right: 30px;
 	display: flex;
 	flex-direction: column;
+	gap: 5px;
+	top: 20px;
+	cursor: pointer;
 }
 
 .nav-item {
-	font-weight: bold;
+	font-weight: 600;
 	color: gray;
+	font-size: 13px;
 }
 
 .nav-link {
 	text-decoration: none;
 	color: inherit;
-	transition: color 0.3s ease-in-out;
+	transition: color 0.2s ease-in-out;
 }
 
 .nav-link:hover {
@@ -39,6 +51,7 @@ body {
 }
 
 .header-text-container {
+	margin-top: -20px;
 }
 
 .header-text {
@@ -68,4 +81,8 @@ body {
 	position: absolute;
 	bottom: 0px;
 	user-select: none;
+}
+
+.corner-text:hover {
+	color: #ffffff;
 }
