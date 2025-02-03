@@ -13,6 +13,18 @@ def index(request):
     return render(request, "index.html")
 
 def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("index.html"))
+        else:
+            return render(request, "login.html", {
+                "message": "Invalid username or password"
+            })
     return render(request, "login.html")
 
 def register_view(request):
@@ -44,7 +56,7 @@ def register_view(request):
 
 @login_required(login_url="/", redirect_field_name=None)
 def shelf(request):
-    return render(request, "shelf.html")
+    return render(request, "shelf.html") 
 
 def browse(request):
-    return render(request, "browse.html")
+    return render(request,  "browse.html")

@@ -1,1 +1,28 @@
-{% extends "layout.html" %} {% block body %} {%endblock%}
+{% extends "layout.html" %} {% block body %}
+
+<form class="login-form" action="{% url 'login' %}" method="POST">
+	{% csrf_token %}
+
+	<div class="form-group">
+		<input
+			class="login-input"
+			type="text"
+			name="username"
+			placeholder="Username"
+		/>
+	</div>
+
+	<div class="form-group">
+		<input
+			class="login-input"
+			type="password"
+			name="password"
+			placeholder="Password"
+		/>
+	</div>
+
+	<input type="submit" class="login-button" value="Log In" />
+	<p>{{message}}</p>
+</form>
+
+{%endblock%}
