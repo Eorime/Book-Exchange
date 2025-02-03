@@ -45,3 +45,6 @@ def register_view(request):
 @login_required(login_url="/", redirect_field_name=None)
 def shelf(request):
     return render(request, "shelf.html")
+
+def browse(request):
+    return render(request, "browse.html")

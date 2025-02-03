@@ -1,8 +1,14 @@
 {% extends "layout.html" %} {% block body %}
 <div class="header-text-container">
-	<div class="header-text-div"><h2 class="header-text">BROWSE</h2></div>
-	<div class="header-text-div"><h2 class="header-text">CHOOSE</h2></div>
-	<div class="header-text-div"><h2 class="header-text">BORROW & LEND</h2></div>
+	<div class="header-text-div">
+		<a href="{% url 'browse' %}"> <h2 class="header-text">BROWSE</h2></a>
+	</div>
+	<div class="header-text-div">
+		<a href="{% url 'browse' %}"> <h2 class="header-text">CHOOSE</h2></a>
+	</div>
+	<div class="header-text-div">
+		<a href="{% url 'browse' %}"> <h2 class="header-text">BORROW & LEND</h2></a>
+	</div>
 </div>
 
 <p class="corner-text">A wide range of books to borrow, read, lend, reread.</p>
