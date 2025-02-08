@@ -48,3 +48,11 @@ class Wishlist(models.Model):
     
     def __str__(self):
         return f"{self.book_id}"
+    
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorite")
+    book_id = models.CharField(max_length=13)
+
+    def __str__(self):
+        return f"{self.book_id}"
