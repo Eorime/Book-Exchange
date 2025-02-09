@@ -30,7 +30,9 @@ def fetch_books():
 
         start_index += max_results
 
+    print(books)
     return books
+
 
 # Create your views here.
 
@@ -84,8 +86,7 @@ def shelf(request):
     return render(request, "shelf.html") 
 
 def browse(request):
-    books = fetch_books
-    return render(request,  "browse.html",
-   {
-       "books": books
-   } )
+    books = fetch_books()  
+    return render(request, "browse.html", {
+        "books": books
+    })
