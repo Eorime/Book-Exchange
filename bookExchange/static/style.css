@@ -17,7 +17,7 @@ a {
 }
 
 .mouse-circle {
-	position: relative;
+	position: fixed;
 	border-radius: 50%;
 	background-color: rgb(101, 101, 247);
 	pointer-events: none;
@@ -57,7 +57,6 @@ a {
 }
 
 .header-text-container {
-	margin-top: -20px;
 }
 
 .header-text {
