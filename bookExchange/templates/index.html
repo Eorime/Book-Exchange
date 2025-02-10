@@ -11,6 +11,14 @@
 	</div>
 </div>
 
+<div class="parallax-container">
+	{% for book in books %}
+	<div class="parallax-item">
+		<img src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="{{book.title}}" />
+	</div>
+	{% endfor %}
+</div>
+
 <p class="corner-text">A wide range of books to borrow, read, lend, reread.</p>
 
 {% endblock %}

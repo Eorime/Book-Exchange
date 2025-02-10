@@ -1,7 +1,11 @@
 {% extends "layout.html" %} {% block body %}
 <div>
 	{% for book in books %}
-	<div>{{ book.volumeInfo.title }}</div>
+	<div>
+		{{ book.volumeInfo.title }}
+		<img src="{{book.volumeInfo.imageLinks.thumbnail}}" />
+	</div>
+
 	{% endfor %}
 </div>
 {% endblock %}

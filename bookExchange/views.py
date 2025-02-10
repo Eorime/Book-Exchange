@@ -12,7 +12,7 @@ def fetch_books():
     start_index = 0
     max_results = 20
     total_limit = 50
-    query = "book OR novel OR literature OR fiction"
+    query = "subject:classic"
     lang = "en"
 
     while start_index < total_limit:
@@ -37,7 +37,11 @@ def fetch_books():
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    books = fetch_books()
+    firstEight = books[:8]
+    return render(request, "index.html", {
+        "books": firstEight
+    })
 
 def login_view(request):
     if request.method == "POST":
