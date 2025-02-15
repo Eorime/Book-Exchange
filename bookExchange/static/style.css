@@ -117,3 +117,11 @@ a {
 	height: 100%;
 	object-fit: cover;
 }
+
+.login-form {
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	width: 50px;
+	inset: 0;
+}
