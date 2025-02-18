@@ -19,7 +19,7 @@ a {
 .mouse-circle {
 	position: fixed;
 	border-radius: 50%;
-	background-color: rgb(157, 217, 247);
+	background-color: #9dd9f7;
 	pointer-events: none;
 	width: 40px;
 	height: 40px;
@@ -48,8 +48,8 @@ a {
 }
 
 .nav-item {
-	font-weight: 600;
-	color: gray;
+	font-weight: 550;
+	color: #6565f7;
 	font-size: 13px;
 }
 
@@ -60,7 +60,7 @@ a {
 }
 
 .nav-link:hover {
-	color: rgb(28, 27, 27);
+	color: rgb(26, 26, 184);
 }
 
 .header-text-container {
@@ -69,11 +69,15 @@ a {
 .header-text {
 	font-style: italic;
 	font-weight: 900;
-	font-size: 64px;
+	font-size: 80px;
 	color: rgb(101, 101, 247);
 	margin: 30px;
 	transition: color 0.1s ease-in-out;
 	cursor: none;
+
+	@media (max-width: 700px) {
+		font-size: 48px;
+	}
 }
 
 .header-text-div {
@@ -113,7 +117,9 @@ a {
 	z-index: 1.5;
 	pointer-events: none;
 
-	@media screen and (max-width: 768px) {
+	/* chamoyaros mxolod mashin roca es width eqneba da height iqneba 700 */
+	/* TODO: adjust for every height and width accordingly */
+	@media screen and (max-width: 768px), screen and(max-height: 700px) {
 		top: 50vh;
 	}
 
@@ -233,7 +239,7 @@ a {
 		width: 88vw;
 	}
 
-	@media (max-width: 850px) {
+	@media (max-width: 855px) {
 		width: 86vw;
 	}
 
@@ -243,8 +249,9 @@ a {
 }
 
 .browse-book {
-	border: 1px solid rgb(101, 101, 247);
-	padding: 50px;
+	border-right: 1px solid rgb(101, 101, 247);
+	border-bottom: 1px solid rgb(101, 101, 247);
+	padding: 70px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -268,9 +275,14 @@ a {
 	flex-direction: row;
 	left: 20px;
 	right: 20px;
-	top: 10px;
+	top: 20px;
 	justify-content: space-between;
 	transition: 0.2s ease-in-out color;
+	color: rgb(101, 101, 247);
+}
+
+.browse-book-title {
+	width: 80%;
 }
 
 .browse-book:hover .browse-a-container {
@@ -294,4 +306,55 @@ a {
 	bottom: 0;
 	justify-content: space-between;
 	transition: 0.2s ease-in-out color;
+	color: rgb(101, 101, 247);
+}
+
+/* .heart {
+	position: absolute;
+	right: 0;
+	width: 20px;
+	height: 20px;
+	z-index: 3;
+}
+
+.heart path {
+	fill: transparent;
+	transition: ease-in-out 0.2s;
+}
+
+.browse-book:hover .heart path {
+	stroke: #fff;
+}
+
+.heart:hover {
+	cursor: pointer;
+}
+
+.heart:hover path {
+	fill: #fff;
+} */
+
+.bookmark {
+	position: absolute;
+	right: 0;
+	width: 22px;
+	height: 22px;
+	z-index: 3;
+}
+
+.bookmark path {
+	fill: transparent;
+	transition: fill 0.2s ease-in-out, stroke 0.2s ease-in-out;
+}
+
+.browse-book:hover .bookmark path {
+	stroke: #fff;
+}
+
+.bookmark:hover {
+	cursor: pointer;
+}
+
+.bookmark:hover path {
+	fill: #fff;
 }

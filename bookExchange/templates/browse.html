@@ -4,16 +4,29 @@
 	<div class="browse-book">
 		<div class="browse-a-container">
 			<span class="browse-book-title"> {{ book.volumeInfo.title }} </span>
+			<svg
+				viewBox="0 0 14 20"
+				class="bookmark"
+				fill="none"
+				stroke="rgb(101, 101, 247)"
+				stroke-width="1.5"
+			>
+				<path d="M2 2 H12 V15 L7 11 L2 15 V2 Z" />
+			</svg>
 		</div>
 		<img
 			class="browse-book-image"
 			src="{{book.volumeInfo.imageLinks.thumbnail}}"
 		/>
 		<div class="browse-b-container">
-			<p>author</p>
-			<p>heart</p>
+			<p><strong> {{book.volumeInfo.authors.0}} </strong></p>
+			<p>lend</p>
 		</div>
 	</div>
 	{% endif %} {% endfor %}
 </div>
 {% endblock %}
+
+<!-- iqneba shelfshi ori tipi, erti iqneba lend (wignebi romlebic shegidzlia atxovo) da favorites(romlebic ginda ro itxovo) -->
+<!--favoritestvis obviously guli iqneba, da lendistvis rame icon iqneba mosafiqrebeli-->
+<!--actual favorites shelfshi ar iqneba, ragac personaluri saiti araa this is solely to lend and borrow books-->
