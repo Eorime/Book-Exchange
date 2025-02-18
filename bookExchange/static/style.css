@@ -19,7 +19,7 @@ a {
 .mouse-circle {
 	position: fixed;
 	border-radius: 50%;
-	background-color: rgb(101, 101, 247);
+	background-color: rgb(157, 217, 247);
 	pointer-events: none;
 	width: 40px;
 	height: 40px;
@@ -110,6 +110,10 @@ a {
 
 	@media screen and (max-width: 768px) {
 		top: 50vh;
+	}
+
+	@media screen and (max-width: 500px) {
+		visibility: hidden;
 	}
 }
 
@@ -223,6 +227,11 @@ a {
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	transition: 0.3s ease-in-out background-color;
+}
+
+.browse-book:hover {
+	background-color: rgb(101, 101, 247);
 }
 
 .browse-book-image {
@@ -239,6 +248,19 @@ a {
 	right: 20px;
 	top: 10px;
 	justify-content: space-between;
+	transition: 0.2s ease-in-out color;
+}
+
+.browse-book:hover .browse-a-container {
+	color: #fff;
+}
+
+.browse-book:hover .browse-b-container {
+	color: #fff;
+}
+
+.browse-book:hover ~ .mouse-circle {
+	background-color: white;
 }
 
 .browse-b-container {
@@ -249,4 +271,5 @@ a {
 	right: 20px;
 	bottom: 0;
 	justify-content: space-between;
+	transition: 0.2s ease-in-out color;
 }

@@ -12,6 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		circle.style.top = `${mouseY - circle.offsetHeight / 2}px`;
 	});
 
+	document.addEventListener("mousedown", () => {
+		circle.style.backgroundColor = "rgb(101, 101, 247)";
+	});
+
+	document.addEventListener("mouseup", () => {
+		circle.style.backgroundColor = "rgb(157, 217, 247)";
+	});
+
 	formElements.forEach((element) => {
 		element.addEventListener("mouseenter", () => {
 			circle.style.opacity = "0";
