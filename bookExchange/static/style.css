@@ -32,7 +32,7 @@ a {
 }
 
 .navbar {
-	position: absolute;
+	position: fixed;
 	right: 30px;
 	display: flex;
 	flex-direction: column;
@@ -102,11 +102,15 @@ a {
 	perspective: 1000px;
 	height: auto;
 	padding: 2rem;
-	top: 0;
+	top: 10vh;
 	right: 20vw;
 	width: 50vw;
 	z-index: 1.5;
 	pointer-events: none;
+
+	@media screen and (max-width: 768px) {
+		top: 50vh;
+	}
 }
 
 /* each book  */
@@ -120,9 +124,13 @@ a {
 .parallax-item:nth-child(1) {
 	right: 40px;
 	top: 20px;
-	width: 280px;
+	width: 300px;
 	z-index: 5;
 	transform: rotate(-3deg);
+
+	@media screen and (max-width: 768px) {
+		width: 50px;
+	}
 }
 
 .parallax-item:nth-child(2) {
@@ -138,6 +146,10 @@ a {
 	width: 160px;
 	transform: rotate(6deg);
 	z-index: 2;
+
+	@media screen and (max-width: 768px) {
+		width: 20px;
+	}
 }
 
 .parallax-item:nth-child(4) {
@@ -146,6 +158,10 @@ a {
 	width: 180px;
 	transform: rotate(-6deg);
 	z-index: 3;
+
+	@media screen and (max-width: 768px) {
+		width: 90px;
+	}
 }
 
 .parallax-item:nth-child(5) {
@@ -166,9 +182,9 @@ a {
 
 .parallax-item:nth-child(7) {
 	right: 100px;
-	top: 100px;
+	top: 20 0px;
 	width: 140px;
-	transform: rotate(12deg);
+	transform: rotate(-22deg);
 	z-index: 4;
 }
 
@@ -191,4 +207,46 @@ a {
 	flex-direction: column;
 	width: 50px;
 	inset: 0;
+}
+
+/* browse page styles */
+
+.browse-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.browse-book {
+	border: 1px solid rgb(101, 101, 247);
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.browse-book-image {
+	width: 150px;
+	height: 200px;
+	object-fit: cover;
+}
+
+.browse-a-container {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	left: 20px;
+	right: 20px;
+	top: 10px;
+	justify-content: space-between;
+}
+
+.browse-b-container {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	left: 20px;
+	right: 20px;
+	bottom: 0;
+	justify-content: space-between;
 }

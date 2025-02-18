@@ -1,11 +1,19 @@
 {% extends "layout.html" %} {% block body %}
-<div>
-	{% for book in books %}
-	<div>
-		{{ book.volumeInfo.title }}
-		<img src="{{book.volumeInfo.imageLinks.thumbnail}}" />
+<div class="browse-container">
+	{% for book in books %} {% if book.volumeInfo.imageLinks.thumbnail %}
+	<div class="browse-book">
+		<div class="browse-a-container">
+			<span class="browse-book-title"> {{ book.volumeInfo.title }} </span>
+		</div>
+		<img
+			class="browse-book-image"
+			src="{{book.volumeInfo.imageLinks.thumbnail}}"
+		/>
+		<div class="browse-b-container">
+			<p>author</p>
+			<p>heart</p>
+		</div>
 	</div>
-
-	{% endfor %}
+	{% endif %} {% endfor %}
 </div>
 {% endblock %}
