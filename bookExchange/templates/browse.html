@@ -3,7 +3,7 @@
 	{% for book in books %}
 	<div class="browse-book">
 		<div class="browse-a-container">
-			<span class="browse-book-title"> {{ book.title }} </span>
+			<span class="browse-book-title"> <strong>{{ book.title }}</strong> </span>
 			<svg
 				viewBox="0 0 14 20"
 				class="bookmark"
@@ -16,7 +16,7 @@
 		</div>
 		<img class="browse-book-image" src="{{book.image}}" />
 		<div class="browse-b-container">
-			<p><strong> {{book.authors.0}} </strong></p>
+			<!-- <p>{{book.subtitle}}</p> -->
 			<svg
 				class="lend"
 				width="36"

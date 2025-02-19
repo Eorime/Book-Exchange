@@ -9,6 +9,7 @@ import requests
 import json
 
 
+
 def fetch_books():
     books = []
     API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
@@ -17,19 +18,12 @@ def fetch_books():
     try:
         params = {
             'api-key': API_KEY,  
-            'query': 'classic literature',
+            'query': 'all',
             'number': 100,
-            'offset': 100
+            'offset': 1
         }
         
-        print(f"Making request to: {base_url}")
-        print(f"With parameters: {params}")
-        
         response = requests.get(base_url, params=params, timeout=10)
-        
-        print(f"Status code: {response.status_code}")
-        print(f"Response content: {response.text}")
-        
         if response.status_code == 200:
             data = response.json()
             print(f"Parsed JSON data: {data}")
