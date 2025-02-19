@@ -1,9 +1,9 @@
 {% extends "layout.html" %} {% block body %}
 <div class="browse-container">
-	{% for book in books %} {% if book.volumeInfo.imageLinks.thumbnail %}
+	{% for book in books %}
 	<div class="browse-book">
 		<div class="browse-a-container">
-			<span class="browse-book-title"> {{ book.volumeInfo.title }} </span>
+			<span class="browse-book-title"> {{ book.title }} </span>
 			<svg
 				viewBox="0 0 14 20"
 				class="bookmark"
@@ -14,12 +14,9 @@
 				<path d="M2 2 H12 V15 L7 11 L2 15 V2 Z" />
 			</svg>
 		</div>
-		<img
-			class="browse-book-image"
-			src="{{book.volumeInfo.imageLinks.thumbnail}}"
-		/>
+		<img class="browse-book-image" src="{{book.image}}" />
 		<div class="browse-b-container">
-			<p><strong> {{book.volumeInfo.authors.0}} </strong></p>
+			<p><strong> {{book.authors.0}} </strong></p>
 			<svg
 				class="lend"
 				width="36"
@@ -36,7 +33,7 @@
 					rx="1"
 					fill="white"
 					stroke="#6565F7"
-					stroke-width="2"
+					stroke-width="2.5"
 				/>
 				<rect
 					x="1"
@@ -46,7 +43,7 @@
 					rx="1"
 					fill="white"
 					stroke="#6565F7"
-					stroke-width="2"
+					stroke-width="2.5"
 				/>
 				<circle
 					cx="24.5"
@@ -54,7 +51,7 @@
 					r="10.5"
 					fill="white"
 					stroke="#6565F7"
-					stroke-width="2"
+					stroke-width="2.5"
 				/>
 				<path
 					d="M30.4596 28.9596C30.7135 28.7058 30.7135 28.2942 30.4596 28.0404L26.323 23.9038C26.0692 23.65 25.6576 23.65 25.4038 23.9038C25.15 24.1576 25.15 24.5692 25.4038 24.823L29.0808 28.5L25.4038 32.177C25.15 32.4308 25.15 32.8424 25.4038 33.0962C25.6576 33.35 26.0692 33.35 26.323 33.0962L30.4596 28.9596ZM19 29.15H30V27.85H19V29.15Z"
@@ -64,7 +61,7 @@
 			</svg>
 		</div>
 	</div>
-	{% endif %} {% endfor %}
+	{% endfor %}
 </div>
 {% endblock %}
 

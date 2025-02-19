@@ -6,33 +6,46 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.db import IntegrityError
 import requests
+import json
+
 
 def fetch_books():
     books = []
-    start_index = 0
-    max_results = 20
-    total_limit = 50
-    query = "subject:classic"
-    lang = "en"
-
-    while start_index < total_limit:
-        api_url = f"https://www.googleapis.com/books/v1/volumes?q={query}&langRestrict={lang}&startIndex={start_index}&maxResults={max_results}"
-        response = requests.get(api_url)
+    API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
+    base_url = "https://api.bigbookapi.com/search-books"
+    
+    try:
+        params = {
+            'api-key': API_KEY,  
+            'query': 'classic literature',
+            'number': 100,
+            'offset': 100
+        }
+        
+        print(f"Making request to: {base_url}")
+        print(f"With parameters: {params}")
+        
+        response = requests.get(base_url, params=params, timeout=10)
+        
+        print(f"Status code: {response.status_code}")
+        print(f"Response content: {response.text}")
         
         if response.status_code == 200:
             data = response.json()
-            if "items" in data:
-                books.extend(data["items"])
-            else:
-                break
+            print(f"Parsed JSON data: {data}")
+            # return just the books list with flattened structure, easy to run over
+            return [book[0] for book in data.get('books', [])]
         else:
-            break  
-
-        start_index += max_results
-
-    print(books)
+            print(f"Error fetching books: {response.status_code}")
+            
+    except requests.RequestException as e:
+        print(f"Request error: {str(e)}")
+    except json.JSONDecodeError as e:
+        print(f"JSON decode error: {str(e)}")
+    except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+    
     return books
-
 
 # Create your views here.
 
