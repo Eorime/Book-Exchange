@@ -63,9 +63,6 @@ a {
 	color: rgb(26, 26, 184);
 }
 
-.header-text-container {
-}
-
 .header-text {
 	font-style: italic;
 	font-weight: 900;
@@ -252,6 +249,7 @@ a {
 	border-right: 1px solid rgb(101, 101, 247);
 	border-bottom: 1px solid rgb(101, 101, 247);
 	padding: 70px;
+	padding-bottom: 60px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -309,31 +307,6 @@ a {
 	color: rgb(101, 101, 247);
 }
 
-/* .heart {
-	position: absolute;
-	right: 0;
-	width: 20px;
-	height: 20px;
-	z-index: 3;
-}
-
-.heart path {
-	fill: transparent;
-	transition: ease-in-out 0.2s;
-}
-
-.browse-book:hover .heart path {
-	stroke: #fff;
-}
-
-.heart:hover {
-	cursor: pointer;
-}
-
-.heart:hover path {
-	fill: #fff;
-} */
-
 .bookmark {
 	position: absolute;
 	right: 0;
@@ -356,5 +329,31 @@ a {
 }
 
 .bookmark:hover path {
+	fill: #fff;
+}
+
+.lend {
+	width: 24px;
+	height: 24px;
+	z-index: 3;
+	cursor: pointer;
+	position: absolute;
+	right: 4px;
+	bottom: 15px;
+}
+
+.lend path {
+	transition: stroke 0.2s ease-in-out;
+}
+
+.lend circle {
+	transition: fill 0.2s ease-in-out;
+}
+
+.lend:hover circle {
+	fill: #6565f7;
+}
+
+.lend:hover path {
 	fill: #fff;
 }
