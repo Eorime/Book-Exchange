@@ -7,10 +7,15 @@ from django.urls import reverse
 from django.db import IntegrityError
 import requests
 import json
+from django.core.cache import cache
 
 
 
 def fetch_books():
+    cached_books = cache.get("all_books")
+    if cached_books:
+        return cached_books
+    
     books = []
     API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
     base_url = "https://api.bigbookapi.com/search-books"
@@ -39,12 +44,14 @@ def fetch_books():
     except Exception as e:
         print(f"Unexpected error: {str(e)}")
     
+    cache.set('all_books', books, 86400)
     return books
 
 # Create your views here.
 
 def index(request):
-    books = fetch_books()
+    from django.core.cache import cache
+    books = cache.get('all_books', [])
     firstEight = books[:8]
     return render(request, "index.html", {
         "books": firstEight
@@ -97,7 +104,8 @@ def shelf(request):
     return render(request, "shelf.html") 
 
 def browse(request):
-    books = fetch_books()  
+    from django.core.cache import cache
+    books = cache.get('all_books', [])
     return render(request, "browse.html", {
         "books": books
     })
