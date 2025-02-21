@@ -14,7 +14,10 @@ from django.core.cache import cache
 def fetch_books():
     cached_books = cache.get("all_books")
     if cached_books:
+        print(f"CACHE HIT: Found {len(cached_books)} books in cache")
         return cached_books
+    
+    print("CACHE MISS: Fetching from API")
     
     books = []
     API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
@@ -22,7 +25,7 @@ def fetch_books():
     
     try:
         params = {
-            'api-key': API_KEY,  
+            'api-key': API_KEY,
             'query': 'all',
             'number': 100,
             'offset': 1
@@ -33,7 +36,10 @@ def fetch_books():
             data = response.json()
             print(f"Parsed JSON data: {data}")
             # return just the books list with flattened structure, easy to run over
-            return [book[0] for book in data.get('books', [])]
+            books = [book[0] for book in data.get('books', [])]
+            if books:
+                cache.set('all_books', books, 86400)
+            return books
         else:
             print(f"Error fetching books: {response.status_code}")
             
@@ -44,14 +50,12 @@ def fetch_books():
     except Exception as e:
         print(f"Unexpected error: {str(e)}")
     
-    cache.set('all_books', books, 86400)
     return books
 
 # Create your views here.
 
 def index(request):
-    from django.core.cache import cache
-    books = cache.get('all_books', [])
+    books = fetch_books()
     firstEight = books[:8]
     return render(request, "index.html", {
         "books": firstEight
@@ -104,8 +108,7 @@ def shelf(request):
     return render(request, "shelf.html") 
 
 def browse(request):
-    from django.core.cache import cache
-    books = cache.get('all_books', [])
+    books = fetch_books()
     return render(request, "browse.html", {
         "books": books
     })
