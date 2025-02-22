@@ -29,4 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			circle.style.opacity = "1";
 		});
 	});
+
+	const loader = document.querySelector(".container");
+	const mainContent = document.getElementById("main-content");
+
+	// Hide loader and show content when page is fully loaded
+	window.addEventListener("load", () => {
+		setTimeout(() => {
+			loader.style.display = "none";
+			mainContent.style.display = "block";
+		}, 4000);
+	});
 });

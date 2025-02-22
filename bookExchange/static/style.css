@@ -11,6 +11,97 @@ body {
 	cursor: none;
 }
 
+/* loader styles */
+.container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+@keyframes pageTurn {
+	0% {
+		transform: rotateY(0deg);
+	}
+	40% {
+		transform: rotateY(180deg);
+	}
+	100% {
+		transform: rotateY(180deg);
+	}
+}
+
+.book {
+	border: 2.8px solid rgb(26, 26, 184);
+	border-radius: 0.25rem;
+	padding: 2rem;
+	perspective: 37.5rem;
+	position: relative;
+	width: 100px;
+	height: 45px;
+	display: flex;
+	transform: translate3d(0, 0, 0);
+	transform-style: preserve-3d;
+}
+
+.page {
+	position: absolute;
+	width: 75px;
+	height: 95px;
+	left: 0.25rem;
+	top: 0.25rem;
+
+	border: 2.8px solid rgb(26, 26, 184);
+
+	background-color: #fff;
+	background-image: repeating-linear-gradient(
+		rgb(26, 26, 184) 0 0.125rem,
+		hsla(223, 10%, 10%, 0) 0.125rem 0.5rem
+	);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 2.5rem 4.125rem, 100% 100%;
+
+	transform-origin: 100% 50%;
+	transform-style: preserve-3d;
+	transform: translate3d(0, 0, 0);
+
+	&:not(.backPage) {
+		border-right-width: 1px;
+	}
+}
+
+.backPage {
+	left: 50%;
+	border-left-width: 1px;
+}
+
+.pageFlip:nth-of-type(2) {
+	position: absolute;
+	z-index: 30;
+	animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 0 infinite;
+}
+
+.pageFlip:nth-of-type(3) {
+	position: absolute;
+	z-index: 20;
+	animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
+}
+
+.pageFlip:nth-of-type(4) {
+	position: absolute;
+	z-index: 10;
+	animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1s infinite;
+}
+
+/* rest of the styles */
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -269,11 +360,11 @@ a {
 	}
 
 	@media (max-width: 1070px) {
-		width: 88vw;
+		width: 86vw;
 	}
 
 	@media (max-width: 855px) {
-		width: 86vw;
+		width: 85vw;
 	}
 
 	@media (max-width: 700px) {
@@ -298,8 +389,8 @@ a {
 }
 
 .browse-book-image {
-	width: 150px;
-	height: 200px;
+	width: 220px;
+	height: 300px;
 	object-fit: cover;
 }
 
@@ -352,6 +443,10 @@ a {
 	width: 22px;
 	height: 22px;
 	z-index: 3;
+
+	@media (max-width: 600px) {
+		right: 5px;
+	}
 }
 
 .bookmark path {
