@@ -23,6 +23,26 @@ body {
 	align-items: center;
 	height: 100%;
 	width: 100%;
+	flex-direction: column;
+}
+
+.pulsate {
+	animation: pulsate 3s ease-out;
+	animation-iteration-count: infinite;
+	opacity: 0.5;
+	color: rgb(26, 26, 184);
+}
+
+@keyframes pulsate {
+	0% {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.5;
+	}
 }
 
 @keyframes pageTurn {
@@ -41,6 +61,7 @@ body {
 	border: 2.8px solid rgb(26, 26, 184);
 	border-radius: 0.25rem;
 	padding: 2rem;
+	margin-bottom: 100px;
 	perspective: 37.5rem;
 	position: relative;
 	width: 100px;
