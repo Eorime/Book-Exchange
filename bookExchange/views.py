@@ -112,3 +112,17 @@ def browse(request):
     return render(request, "browse.html", {
         "books": books
     })
+
+def book(request, book_id):
+    books = cache.get("all_books")
+    
+    if not books:
+        books = fetch_books()
+    
+    book = next((book for book in books if book['id'] == book_id), None)
+
+    if book:
+        return render(request, 'book.html', {
+            'book': book
+        })
+    
