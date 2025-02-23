@@ -113,16 +113,44 @@ def browse(request):
         "books": books
     })
 
-def book(request, book_id):
-    books = cache.get("all_books")
-    
-    if not books:
-        books = fetch_books()
-    
-    book = next((book for book in books if book['id'] == book_id), None)
+def fetch_book_details(book_id):
+    cached_book = cache.get(f"book_{book_id}")
+    if cached_book:
+        return cached_book
 
-    if book:
-        return render(request, 'book.html', {
-            'book': book
-        })
+    API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
+    base_url = f"https://api.bigbookapi.com/{book_id}"
+
+    try:
+        params = {
+            'api-key': API_KEY
+        }
+
+        response = requests.get(base_url, params=params, timeout=10)
+        if response.status_code == 200:
+            book_data = response.json()
+            print(f"Received book data: {book_data}")
+            
+            # cache the book data for 24 hours
+            cache.set(f"book_{book_id}", book_data, 86400)
+            return book_data
+        else:
+            print(f"Error fetching book details: {response.status_code}")
+
+    except requests.RequestException as e:
+        print(f"Request error: {str(e)}")
+    except json.JSONDecodeError as e:
+        print(f"JSON decode error: {str(e)}")
+    except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+
+    return None
+
+def book(request, book_id):
+    book_details = fetch_book_details(book_id)
     
+    if book_details:
+        return render(request, 'book.html', {
+            'book': book_details
+        })
+

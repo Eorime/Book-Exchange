@@ -1,4 +1,71 @@
 {% extends "layout.html" %} {% block body %}
 
-<p>hiii</p>
+<div class="book-details-container">
+	<div class="a-side">
+		<div class="details-a-top">
+			<a href="{% url 'browse' %}" class="details-back-arrow"> Back Arrow </a>
+			<svg
+				viewBox="0 0 14 20"
+				class="bookmark-details"
+				fill="none"
+				stroke="rgb(101, 101, 247)"
+				stroke-width="1.5"
+			>
+				<path d="M2 2 H12 V15 L7 11 L2 15 V2 Z" />
+			</svg>
+		</div>
+		<div class="book-image-container">
+			<img src="{{book.image}}" class="book-details-image" />
+		</div>
+		<div class="details-a-bottom">
+			{% for author in book.authors %}
+			<span class="author">Written by <strong>{{author.name}}</strong></span>
+			{% endfor %}
+			<svg
+				class="lend-details"
+				width="36"
+				height="40"
+				viewBox="0 0 36 40"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<rect
+					x="3"
+					y="2"
+					width="26"
+					height="31"
+					rx="1"
+					fill="white"
+					stroke="#6565F7"
+					stroke-width="2.5"
+				/>
+				<rect
+					x="1"
+					y="1"
+					width="24"
+					height="33"
+					rx="1"
+					fill="white"
+					stroke="#6565F7"
+					stroke-width="2.5"
+				/>
+				<circle
+					cx="24.5"
+					cy="28.5"
+					r="10.5"
+					fill="white"
+					stroke="#6565F7"
+					stroke-width="2.5"
+				/>
+				<path
+					d="M30.4596 28.9596C30.7135 28.7058 30.7135 28.2942 30.4596 28.0404L26.323 23.9038C26.0692 23.65 25.6576 23.65 25.4038 23.9038C25.15 24.1576 25.15 24.5692 25.4038 24.823L29.0808 28.5L25.4038 32.177C25.15 32.4308 25.15 32.8424 25.4038 33.0962C25.6576 33.35 26.0692 33.35 26.323 33.0962L30.4596 28.9596ZM19 29.15H30V27.85H19V29.15Z"
+					fill="#6565F7"
+					class="arrow"
+				/>
+			</svg>
+		</div>
+	</div>
+	<div class="b-side"></div>
+</div>
+
 {% endblock %}
