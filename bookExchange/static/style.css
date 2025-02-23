@@ -27,21 +27,21 @@ body {
 }
 
 .pulsate {
-	animation: pulsate 3s ease-out;
+	animation: pulsate 2s ease-out;
 	animation-iteration-count: infinite;
-	opacity: 0.5;
+	opacity: 0.3;
 	color: rgb(26, 26, 184);
 }
 
 @keyframes pulsate {
 	0% {
-		opacity: 0.5;
+		opacity: 0.3;
 	}
 	50% {
 		opacity: 1;
 	}
 	100% {
-		opacity: 0.5;
+		opacity: 0.3;
 	}
 }
 
