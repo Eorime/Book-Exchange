@@ -148,9 +148,17 @@ def fetch_book_details(book_id):
 
 def book(request, book_id):
     book_details = fetch_book_details(book_id)
+    rating = float(book_details['rating']['average']) * 10
     
-    if book_details:
-        return render(request, 'book.html', {
-            'book': book_details
-        })
-
+    description = book_details['description']
+    words = description.split()
+    mid = len(words) // 2
+    top_half = ' '.join(words[:mid])
+    bottom_half = ' '.join(words[mid:])
+    
+    return render(request, 'book.html', {
+        'book': book_details,
+        'rating': rating,
+        'description_top': top_half,
+        'description_bottom': bottom_half
+    })

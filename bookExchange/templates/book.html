@@ -66,21 +66,28 @@
 		</div>
 	</div>
 	<div class="b-side">
-		<div class="b-side-left">
-			<div class="b-side-title-container">
-				<span class="b-side-title">{{book.title}}</span>
-				{% for author in book.authors %} {% if forloop.first %}
-				<span class="b-side-author">{{ author.name }}</span>
-				{% endif %} {% endfor %}
+		<div class="b-side-top">
+			<div class="b-side-left">
+				<div class="b-side-title-container">
+					<span class="b-side-title">{{book.title}}</span>
+					{% for author in book.authors %} {% if forloop.first %}
+					<span class="b-side-author">{{ author.name }}</span>
+					{% endif %} {% endfor %}
+				</div>
+				<div class="b-side-info-container">
+					<span> Published: {{book.publish_date|floatformat:"0"}} </span>
+					<span> Pages: {{book.number_of_pages|floatformat:"0"}} </span>
+					<span>Rating: {{ rating|floatformat:1 }}</span>
+				</div>
 			</div>
-			<div class="b-side-info-container">
-				<span> Published: {{book.publish_date|floatformat:"0"}} </span>
-				<span> Pages: {{book.number_of_pages|floatformat:"0"}} </span>
+			<div class="b-side-right">
+				<div class="b-side-description">
+					<div>{{description_top}}</div>
+					<div>{{description_bottom}}</div>
+				</div>
 			</div>
 		</div>
-		<div class="b-side-right">
-			<div class="b-side-description">{{book.description}}</div>
-		</div>
+		<!-- <div class="b-side-bottom">asd</div> -->
 	</div>
 </div>
 
