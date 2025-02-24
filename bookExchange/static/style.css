@@ -515,20 +515,23 @@ a {
 
 .book-details-container {
 	position: relative;
+	width: 100vw;
+	min-height: 90vh;
+	display: flex;
 }
 
 .a-side {
 	display: flex;
 	flex-direction: column;
-	position: absolute;
-	width: 40%;
-	height: 100vh;
+	position: relative;
+	width: 25vw;
+	min-height: 90vh;
 	padding-left: 3%;
 	padding-right: 3%;
 	gap: 20px;
-	border-right: solid 2px rgb(101, 101, 247);
+	border-right: solid 1px rgb(101, 101, 247);
 	align-items: center;
-	justify-content: space-between;
+	inset: 0;
 }
 
 .details-a-top {
@@ -548,6 +551,8 @@ a {
 .book-image-container {
 	width: 21vw;
 	height: 65vh;
+	margin-top: 3vh;
+	margin-bottom: 5vh;
 
 	img {
 		width: 100%;
@@ -592,11 +597,6 @@ a {
 	height: 30px;
 	z-index: 3;
 	cursor: pointer;
-	right: 4px;
-	bottom: 15px;
-	position: absolute;
-	right: 6%;
-	bottom: 5%;
 }
 
 .lend-details path {
@@ -621,4 +621,53 @@ a {
 
 .book-link {
 	cursor: none;
+}
+
+.b-side {
+	position: relative;
+	width: 55vw;
+	min-height: 90vh;
+	padding: 3%;
+	display: flex;
+	flex-direction: row;
+	border-right: solid 1px rgb(101, 101, 247);
+}
+
+.b-side-left {
+	inset: 0;
+	width: 40%;
+	height: 80%;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 3%;
+}
+
+.b-side-right {
+	width: 60%;
+	position: absolute;
+	right: 25px;
+}
+
+.b-side-title-container {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.b-side-title {
+	color: rgb(101, 101, 247);
+	font-size: 2rem;
+	font-weight: 600;
+	font-style: italic;
+}
+
+.b-side-author {
+	color: rgb(101, 101, 247);
+}
+
+.b-side-info-container {
+	display: flex;
+	flex-direction: column;
 }

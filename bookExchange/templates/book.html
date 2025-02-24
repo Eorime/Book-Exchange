@@ -65,7 +65,23 @@
 			</svg>
 		</div>
 	</div>
-	<div class="b-side"></div>
+	<div class="b-side">
+		<div class="b-side-left">
+			<div class="b-side-title-container">
+				<span class="b-side-title">{{book.title}}</span>
+				{% for author in book.authors %} {% if forloop.first %}
+				<span class="b-side-author">{{ author.name }}</span>
+				{% endif %} {% endfor %}
+			</div>
+			<div class="b-side-info-container">
+				<span> Published: {{book.publish_date|floatformat:"0"}} </span>
+				<span> Pages: {{book.number_of_pages|floatformat:"0"}} </span>
+			</div>
+		</div>
+		<div class="b-side-right">
+			<div class="b-side-description">{{book.description}}</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}
