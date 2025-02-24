@@ -18,9 +18,9 @@
 			<img src="{{book.image}}" class="book-details-image" />
 		</div>
 		<div class="details-a-bottom">
-			{% for author in book.authors %}
-			<span class="author">Written by <strong>{{author.name}}</strong></span>
-			{% endfor %}
+			{% for author in book.authors %} {% if forloop.first %}
+			<span class="author">Written by <strong>{{ author.name }}</strong></span>
+			{% endif %} {% endfor %}
 			<svg
 				class="lend-details"
 				width="36"

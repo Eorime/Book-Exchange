@@ -618,3 +618,7 @@ a {
 .author {
 	color: rgb(101, 101, 247);
 }
+
+.book-link {
+	cursor: none;
+}
