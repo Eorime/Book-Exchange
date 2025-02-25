@@ -101,12 +101,14 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index.html"))
+            return HttpResponseRedirect(reverse("index.html", {
+                "hide_loader": True
+            }))
         else:
             return render(request, "login.html", {
-                "message": "Invalid username or password"
+                "message": "Invalid username or password", "hide_loader": True
             })
-    return render(request, "login.html")
+    return render(request, "login.html", {"hide_loader": True})
 
 def register_view(request):
     if request.method == "POST":
@@ -116,10 +118,16 @@ def register_view(request):
         #confirm password
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
+
+        if not username or not mail or not password or not confirmation:
+            return render(request, "register.html", {
+                "message": "All fields required",
+                "hide_loader": True})
         
         if password != confirmation:
             return render(request, "register.html", {
-                "message": "Passwords don't match"
+                "message": "Passwords don't match",
+                "hide_loader": True
             })
         
         #attempt creating a new user
@@ -129,11 +137,13 @@ def register_view(request):
         except IntegrityError:
             return render(request, "register.html", {
                 "message": "User already exists"
-            })
+            , "hide_loader": True})
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("index"), {
+            "hide_loader": True
+        })
     else:
-        return render(request, "register.html")
+        return render(request, "register.html", {"hide_loader": True})
 
 @login_required(login_url="/", redirect_field_name=None)
 def shelf(request):

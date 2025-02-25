@@ -38,6 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		setTimeout(() => {
 			loader.style.display = "none";
 			mainContent.style.display = "block";
-		}, 2000);
+		}, 1800);
 	});
 });

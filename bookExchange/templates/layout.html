@@ -11,7 +11,8 @@
 	</head>
 	<body>
 		<!-- loader -->
-		<!-- <div class="container">
+		{% if not hide_loader %}
+		<div class="container">
 			<p class="pulsate">Loading...</p>
 			<div class="book">
 				<div class="page"></div>
@@ -20,7 +21,8 @@
 				<div class="page pageFlip"></div>
 				<div class="page pageFlip"></div>
 			</div>
-		</div> -->
+		</div>
+		{% endif %}
 		<!-- layout stuff -->
 		<div class="mouse-circle"></div>
 		<div class="navbar">

@@ -731,3 +731,20 @@ a {
 	align-items: center;
 	position: relative;
 }
+
+.input-button {
+	width: 100%;
+	border: 2px solid rgb(101, 101, 247);
+	background-color: white;
+	color: rgb(101, 101, 247);
+	font-size: 1.3em;
+	padding: 11px;
+	margin-top: 4vh;
+	cursor: pointer;
+	transition: 0.3s ease-in-out all;
+}
+
+.input-button:hover {
+	color: #fff;
+	background-color: rgb(101, 101, 247);
+}
