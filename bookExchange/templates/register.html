@@ -1,46 +1,47 @@
 {% extends "layout.html" %} {% block body %}
-<div>hii rezoe retard</div>
-<form class="form-container" action="{% url 'register' %}" method="POST">
-	{% csrf_token %}
-	<div class="form-group">
-		<input
-			class="form-input"
-			type="text"
-			name="username"
-			placeholder="Username"
-		/>
-	</div>
+<div class="register-page">
+	<form class="form" action="{% url 'register' %}" method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<input
+				class="form-input"
+				type="text"
+				name="username"
+				placeholder="Username"
+			/>
+		</div>
 
-	<div class="form-group">
-		<input
-			class="form-input"
-			type="email"
-			name="mail"
-			placeholder="Email Address"
-		/>
-	</div>
+		<div class="form-group">
+			<input
+				class="form-input"
+				type="email"
+				name="mail"
+				placeholder="Email Address"
+			/>
+		</div>
 
-	<div class="form-group">
-		<input
-			class="form-input"
-			type="password"
-			name="password"
-			placeholder="Password"
-		/>
-	</div>
+		<div class="form-group">
+			<input
+				class="form-input"
+				type="password"
+				name="password"
+				placeholder="Password"
+			/>
+		</div>
 
-	<div class="form-group">
-		<input
-			class="form-input"
-			type="password"
-			name="confirmation"
-			placeholder="Confirmation"
-		/>
-	</div>
+		<div class="form-group">
+			<input
+				class="form-input"
+				type="password"
+				name="confirmation"
+				placeholder="Confirmation"
+			/>
+		</div>
 
-	<input class="input-button" type="submit" value="Register" />
+		<input class="input-button" type="submit" value="Register" />
 
-	<p>{{message}}</p>
-</form>
+		<p>{{message}}</p>
+	</form>
+</div>
 
 {% endblock %}
