@@ -516,8 +516,9 @@ a {
 .book-details-container {
 	position: relative;
 	width: 100vw;
-	min-height: 90vh;
+	height: 100vh;
 	display: flex;
+	overflow: hidden;
 }
 
 .a-side {
@@ -562,7 +563,7 @@ a {
 }
 
 .bookmark-details {
-	width: 30px;
+	/* width: 30px; */
 	height: 30px;
 	z-index: 2;
 }
@@ -624,9 +625,8 @@ a {
 }
 
 .b-side {
-	padding: 3%;
 	position: relative;
-	width: 55vw;
+	width: 62vw;
 	min-height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -634,9 +634,11 @@ a {
 }
 
 .b-side-top {
+	padding: 3%;
 	display: flex;
 	position: absolute;
 	height: 50%;
+	border-bottom: 1px solid rgb(101, 101, 247);
 }
 
 .b-side-bottom {
@@ -662,13 +664,8 @@ a {
 
 .b-side-description {
 	width: 90%;
-}
-
-.b-side-description {
-	width: 90%;
 	display: flex;
 	flex-direction: column;
-	position: absolute;
 	gap: 20px;
 }
 

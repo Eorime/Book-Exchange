@@ -24,7 +24,7 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.name}"
     
-class LentBooks(models.Model):
+class CanLend(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="lent_books")
     book_id = models.CharField(max_length=13)
     lent_date = models.DateField(auto_now_add=True)
@@ -33,7 +33,7 @@ class LentBooks(models.Model):
     def __str__(self):
         return f"{self.book_id}"
     
-class BorrowedBooks(models.Model):
+class WillBorrow(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="borrowed_books")
     book_id = models.CharField(max_length=13)
     borrow_date = models.DateField(auto_now_add=True)
