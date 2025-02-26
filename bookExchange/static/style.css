@@ -30,7 +30,8 @@ body {
 	animation: pulsate 2s ease-out;
 	animation-iteration-count: infinite;
 	opacity: 0.3;
-	color: rgb(26, 26, 184);
+	color: rgb(101, 101, 247);
+	transform: translateY(-220%);
 }
 
 @keyframes pulsate {
@@ -58,7 +59,7 @@ body {
 }
 
 .book {
-	border: 2.8px solid rgb(26, 26, 184);
+	border: 2.8px solid rgb(101, 101, 247);
 	border-radius: 0.25rem;
 	padding: 2rem;
 	margin-bottom: 100px;
@@ -67,7 +68,7 @@ body {
 	width: 100px;
 	height: 45px;
 	display: flex;
-	transform: translate3d(0, 0, 0);
+	transform: translate3d(0, -30%, 0);
 	transform-style: preserve-3d;
 }
 
@@ -78,11 +79,11 @@ body {
 	left: 0.25rem;
 	top: 0.25rem;
 
-	border: 2.8px solid rgb(26, 26, 184);
+	border: 2.8px solid rgb(101, 101, 247);
 
 	background-color: #fff;
 	background-image: repeating-linear-gradient(
-		rgb(26, 26, 184) 0 0.125rem,
+		rgb(101, 101, 247) 0 0.125rem,
 		hsla(223, 10%, 10%, 0) 0.125rem 0.5rem
 	);
 	background-repeat: no-repeat;
@@ -652,6 +653,19 @@ a {
 	width: 60%;
 	right: 0;
 	color: #6565f7;
+	overflow-y: auto;
+}
+
+.b-side-right::-webkit-scrollbar {
+	width: 8px;
+}
+
+.b-side-right::-webkit-scrollbar-thumb {
+	background: rgb(180, 180, 253);
+}
+
+.b-side-right::-webkit-scrollbar-track {
+	background: rgb(230, 230, 246);
 }
 
 .b-side-description {
