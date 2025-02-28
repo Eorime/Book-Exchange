@@ -8,6 +8,7 @@ from django.db import IntegrityError
 import requests
 import json
 from django.core.cache import cache
+from django.shortcuts import redirect
 
 
 def fetch_books():
@@ -101,14 +102,17 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index.html", {
-                "hide_loader": True
-            }))
+            return redirect("browse")
         else:
+            print("it wont work")
             return render(request, "login.html", {
                 "message": "Invalid username or password", "hide_loader": True
             })
     return render(request, "login.html", {"hide_loader": True})
+
+def logout_view(request):
+    logout(request)
+    return redirect('index') 
 
 def register_view(request):
     if request.method == "POST":
