@@ -6,8 +6,6 @@ from django.conf import settings
 
 class User(AbstractUser):
     name = models.CharField(max_length=64, blank=False)
-    email = models.EmailField(max_length=64, blank=False)
-    password = models.CharField(max_length=64, blank=False)
 
     groups = models.ManyToManyField(
         'auth.Group', 

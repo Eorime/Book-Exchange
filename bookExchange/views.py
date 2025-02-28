@@ -139,13 +139,11 @@ def register_view(request):
                 "message": "User already exists"
             , "hide_loader": True})
         login(request, user)
-        return HttpResponseRedirect(reverse("index"), {
-            "hide_loader": True
-        })
+        return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "register.html", {"hide_loader": True})
 
-@login_required(login_url="/", redirect_field_name=None)
+@login_required(login_url="/login", redirect_field_name=None)
 def shelf(request):
     return render(request, "shelf.html") 
 
