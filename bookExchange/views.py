@@ -149,7 +149,10 @@ def register_view(request):
 
 @login_required(login_url="/login", redirect_field_name=None)
 def shelf(request):
-    return render(request, "shelf.html") 
+    user = request.user
+    return render(request, "shelf.html", {
+        "user": user, 
+    }) 
 
 def browse(request):
     books = fetch_books()
