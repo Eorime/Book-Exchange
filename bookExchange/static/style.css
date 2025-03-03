@@ -216,10 +216,7 @@ a {
 	position: absolute;
 	bottom: 0px;
 	user-select: none;
-}
-
-.corner-text:hover {
-	color: #ffffff;
+	z-index: 2;
 }
 
 /* parallax items */
