@@ -31,7 +31,7 @@ def fetch_books():
             'offset': 1
         }
         
-        response = requests.get(base_url, params=params, timeout=10)
+        response = requests.get(base_url, params=params, timeout=50)
         if response.status_code == 200:
             data = response.json()
             print(f"Parsed JSON data: {data}")
@@ -165,6 +165,10 @@ def book(request, book_id):
     book_details = fetch_book_details(book_id)
     rating = float(book_details['rating']['average']) * 10
     
+    if book_details is None:
+        # Handle the case where the response is None, maybe return a 404 or a message
+        return HttpResponse("Book not found or error occurred", status=404)
+
     description = book_details['description']
     words = description.split()
     mid = len(words) // 2
