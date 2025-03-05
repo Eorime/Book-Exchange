@@ -632,6 +632,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	border-right: solid 1px rgb(101, 101, 247);
+	justify-content: space-between;
 }
 
 .b-side-top {
@@ -645,6 +646,7 @@ a {
 .b-side-bottom {
 	height: 50%;
 	position: absolute;
+	inset: 0;
 }
 
 .b-side-left {

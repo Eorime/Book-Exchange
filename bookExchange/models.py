@@ -38,3 +38,4 @@ class WillBorrow(models.Model):
     def __str__(self):
         return f"{self.book_id}"
     
+    
