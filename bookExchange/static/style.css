@@ -828,6 +828,31 @@ a {
 	position: relative;
 }
 
+.image-input {
+	display: none;
+}
+
+.custom-image-button {
+	border-bottom: 2px solid rgb(101, 101, 247);
+	border-left: 2px solid rgb(101, 101, 247);
+	border-right: 2px solid rgb(101, 101, 247);
+	font-size: 0.8em;
+	font-weight: 600;
+	color: rgb(140, 140, 253);
+	padding: 10px;
+	margin-top: 10px;
+	position: relative;
+	cursor: pointer;
+	left: 73%;
+	display: inline-block;
+	transition: 0.3s ease-in-out all;
+}
+
+.custom-image-button:hover {
+	background-color: rgb(101, 101, 247);
+	color: #fff;
+}
+
 .input-button {
 	width: 100%;
 	border: 2px solid rgb(101, 101, 247);
@@ -845,7 +870,13 @@ a {
 	background-color: rgb(101, 101, 247);
 }
 
-.user-profile-image {
-	width: 100px;
-	height: 100px;
+.user-profile-img-container {
+	width: 150px;
+	height: 150px;
+}
+
+.user-profile-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
