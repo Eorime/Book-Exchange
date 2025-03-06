@@ -1,6 +1,11 @@
 {% extends "layout.html" %} {% block body %}
 <div class="register-page">
-	<form class="form" action="{% url 'register' %}" method="POST">
+	<form
+		class="form"
+		action="{% url 'register' %}"
+		method="POST"
+		enctype="multipart/form-data"
+	>
 		{% csrf_token %}
 		<div class="form-group">
 			<input
@@ -37,6 +42,13 @@
 				placeholder="Confirmation"
 			/>
 		</div>
+
+		<input
+			class="image-input"
+			type="file"
+			name="profile_image"
+			accept="image/*"
+		/>
 
 		<input class="input-button" type="submit" value="Register" />
 

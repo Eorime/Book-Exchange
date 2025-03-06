@@ -137,7 +137,11 @@ def register_view(request):
         #attempt creating a new user
         try: 
             user = User.objects.create_user(username, mail, password)
-            user.save()
+            # user.save()
+
+            if "profile_image" in request.FILES:
+                user.image = request.FILES["profile_image"]
+                user.save()
         except IntegrityError:
             return render(request, "register.html", {
                 "message": "User already exists"
