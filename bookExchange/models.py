@@ -16,6 +16,12 @@ class User(AbstractUser):
         blank=True
     )
 
+    image = models.ImageField(
+        upload_to='profile_images',
+        blank=True,
+        null=True,
+    )
+
 
     def __str__(self):
         return f"{self.username}"

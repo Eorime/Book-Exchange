@@ -638,21 +638,92 @@ a {
 .b-side-top {
 	padding: 3%;
 	display: flex;
-	position: absolute;
-	height: 50%;
+	height: 36%;
 	border-bottom: 1px solid rgb(101, 101, 247);
 }
 
 .b-side-bottom {
 	height: 50%;
-	position: absolute;
-	inset: 0;
+	padding: 3%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.b-side-bottom-header {
+	color: rgb(101, 101, 247);
+	font-size: 1.2rem;
+	font-weight: 600;
+	font-style: italic;
+	margin-bottom: 1%;
+}
+
+.b-side-bottom-lenders-container {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+	margin-bottom: 2%;
+}
+
+.b-side-bottom-lender {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 80px;
+}
+
+.b-side-bottom-lender-img-container {
+	height: 80px;
+	background-color: rgb(101, 101, 247);
+}
+
+.b-side-bottom-lender-name {
+	font-size: 14px;
+	color: rgb(101, 101, 247);
+	margin: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.b-side-bottom-borrowers-container {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}
+
+.b-side-bottom-borrower-header {
+	color: rgb(101, 101, 247);
+	font-size: 1.2rem;
+	font-weight: 600;
+	font-style: italic;
+	margin-bottom: 1%;
+}
+
+.b-side-bottom-borrower {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 80px;
+}
+
+.b-side-bottom-borrower-img-container {
+	height: 80px;
+	background-color: rgb(101, 101, 247);
+}
+
+.b-side-bottom-borrower-name {
+	font-size: 14px;
+	margin: 0;
+	color: rgb(101, 101, 247);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .b-side-left {
 	inset: 0;
 	width: 40%;
-	height: 80%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
