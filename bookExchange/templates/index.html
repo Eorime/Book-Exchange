@@ -14,7 +14,9 @@
 <div class="parallax-container">
 	{% for book in books %}
 	<div class="parallax-item">
-		<img src="{{book.image}}" alt="{{book.title}}" />
+		<a href="/book/{{book.id}}" style="cursor: none">
+			<img src="{{book.image}}" alt="{{book.title}}" />
+		</a>
 	</div>
 	{% endfor %}
 </div>
