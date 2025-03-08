@@ -2,7 +2,20 @@
 
 <h1>hii {{user}}</h1>
 <div class="user-profile-img-container">
-	<img class="user-profile-img" src="{{ user.image.url}}" />
+	<img class="user-profile-img" src="{{user.image.url}}" />
 </div>
+
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="form-group">
+		<input
+			type="file"
+			name="profile_image"
+			id="profile_image"
+			accept="image/*"
+		/>
+		<button type="submit" class="btn btn-primary">Update Picture</button>
+	</div>
+</form>
 
 {% endblock %}

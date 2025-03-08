@@ -154,8 +154,16 @@ def register_view(request):
 @login_required(login_url="/login", redirect_field_name=None)
 def shelf(request):
     user = request.user
+
+    if request.method == "POST":
+        # Check if an image file was uploaded
+        if "profile_image" in request.FILES:
+            user.image = request.FILES["profile_image"]
+            user.save()
+    
     return render(request, "shelf.html", {
         "user": user, 
+
     }) 
 
 def browse(request):
