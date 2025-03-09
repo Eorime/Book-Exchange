@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const circle = document.querySelector(".mouse-circle");
 	const formElements = document.querySelectorAll(
-		".form-container input, .form-container textarea, .form-container select, .form input, .login-form textarea, .login-form select, .custom-image-button "
+		".form-container input, .form-container textarea, .form-container select, .form input, .login-form textarea, .login-form select, .custom-image-button, .form-group, .submit-btn "
 	);
 
 	document.addEventListener("mousemove", (e) => {
