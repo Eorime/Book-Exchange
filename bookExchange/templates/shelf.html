@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 
-<h1>hii {{user}}</h1>
+<h1>hii {{user.username}}</h1>
 <div class="user-profile-img-container">
 	<img class="user-profile-img" src="{{user.image.url}}" />
 </div>
@@ -16,6 +16,14 @@
 		/>
 		<button type="submit" class="btn btn-primary">Update Picture</button>
 	</div>
+</form>
+
+<form method="POST" action="{% url 'shelf' %}">
+	{% csrf_token %}
+	<div class="form-group">
+		<input type="text" class="new-username" id="new-username" name="username" />
+	</div>
+	<button type="submit" class="btn btn-primary">Update Username</button>
 </form>
 
 {% endblock %}

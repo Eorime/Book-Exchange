@@ -156,10 +156,23 @@ def shelf(request):
     user = request.user
 
     if request.method == "POST":
-        # Check if an image file was uploaded
+        # check if an image file was uploaded
         if "profile_image" in request.FILES:
             user.image = request.FILES["profile_image"]
             user.save()
+
+        if "username"in request.POST:
+            new_username = request.POST["username"]
+            
+            if new_username:
+                if User.objects.filter(username = new_username).exclude(id = user.id).exists():
+                    return render(request, "shelf.html", {
+                        "user": user,
+                        "message": "Username taken"
+                    })
+                
+                user.username = new_username
+                user.save()
     
     return render(request, "shelf.html", {
         "user": user, 
