@@ -1,9 +1,25 @@
 {% extends "layout.html" %} {% block body %}
 
-<h1>hii {{user.username}}</h1>
 <div class="user-profile-img-container">
 	<img class="user-profile-img" src="{{user.image.url}}" />
 </div>
+
+<h1>
+	<form method="POST" action="{% url 'shelf' %}" class="username-edit-form">
+		{% csrf_token %}
+		<span class="username-container">
+			<span class="username-display">{{user.username}}</span>
+			<input
+				type="text"
+				class="username-input"
+				id="new-username"
+				name="username"
+				value="{{user.username}}"
+			/>
+			<button type="submit" class="submit-btn">Save</button>
+		</span>
+	</form>
+</h1>
 
 <form method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
@@ -14,16 +30,8 @@
 			id="profile_image"
 			accept="image/*"
 		/>
-		<button type="submit" class="submit-btn">Update Picture</button>
+		<button type="submit" class="submit-btn-picture">Update Picture</button>
 	</div>
-</form>
-
-<form method="POST" action="{% url 'shelf' %}">
-	{% csrf_token %}
-	<div class="form-group">
-		<input type="text" class="new-username" id="new-username" name="username" />
-	</div>
-	<button type="submit" class="submit-btn">Update Username</button>
 </form>
 
 {% endblock %}
