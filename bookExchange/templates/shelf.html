@@ -1,8 +1,9 @@
-{% extends "layout.html" %} {% block body %}
-
+{% extends "layout.html" %} {% block body %} {% if user.image and user.image.url
+%}
 <div class="user-profile-img-container">
 	<img class="user-profile-img" src="{{user.image.url}}" />
 </div>
+{% endif %}
 
 <h1>
 	<form method="POST" action="{% url 'shelf' %}" class="username-edit-form">
@@ -33,5 +34,4 @@
 		<button type="submit" class="submit-btn-picture">Update Picture</button>
 	</div>
 </form>
-
 {% endblock %}
