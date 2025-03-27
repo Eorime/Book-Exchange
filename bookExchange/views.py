@@ -173,6 +173,14 @@ def shelf(request):
                 
                 user.username = new_username
                 user.save()
+
+        if "delete_image" in request.POST:
+            user.image.delete()
+            user.save()
+
+        return render(request, "shelf.html", {
+            "user": user
+        })
     
     return render(request, "shelf.html", {
         "user": user, 

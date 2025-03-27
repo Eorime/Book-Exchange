@@ -1,37 +1,45 @@
-{% extends "layout.html" %} {% block body %} {% if user.image and user.image.url
-%}
-<div class="user-profile-img-container">
-	<img class="user-profile-img" src="{{user.image.url}}" />
-</div>
-{% endif %}
+{% extends "layout.html" %}
 
-<h1>
-	<form method="POST" action="{% url 'shelf' %}" class="username-edit-form">
-		{% csrf_token %}
-		<span class="username-container">
-			<span class="username-display">{{user.username}}</span>
-			<input
-				type="text"
-				class="username-input"
-				id="new-username"
-				name="username"
-				value="{{user.username}}"
-			/>
-			<button type="submit" class="submit-btn">Save</button>
-		</span>
-	</form>
-</h1>
+{% block body %}
+    {% if user.image and user.image.url %}
+    <div class="user-profile-img-container">
+        <img class="user-profile-img" src="{{user.image.url}}" />
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" name="delete_image" class="delete-image-btn">
+                Delete Image
+            </button>
+        </form>
+    </div>
+    {% endif %}
 
-<form method="POST" enctype="multipart/form-data">
-	{% csrf_token %}
-	<div class="form-group">
-		<input
-			type="file"
-			name="profile_image"
-			id="profile_image"
-			accept="image/*"
-		/>
-		<button type="submit" class="submit-btn-picture">Update Picture</button>
-	</div>
-</form>
+    <h1>
+        <form method="POST" action="{% url 'shelf' %}" class="username-edit-form">
+            {% csrf_token %}
+            <span class="username-container">
+                <span class="username-display">{{user.username}}</span>
+                <input
+                    type="text"
+                    class="username-input"
+                    id="new-username"
+                    name="username"
+                    value="{{user.username}}"
+                />
+                <button type="submit" class="submit-btn">Save</button>
+            </span>
+        </form>
+    </h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input
+                type="file"
+                name="profile_image"
+                id="profile_image"
+                accept="image/*"
+            />
+            <button type="submit" class="submit-btn-picture">Update Picture</button>
+        </div>
+    </form>
 {% endblock %}
