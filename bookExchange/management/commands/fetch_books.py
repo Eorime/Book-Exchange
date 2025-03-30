@@ -15,7 +15,7 @@ class Command(BaseCommand):
             params = {
                 'api-key': API_KEY, 
                 'query': 'all',
-                'number': 100,
+                'number': 1000,
                 'offset': 1
             }
             

@@ -11,35 +11,50 @@ from django.core.cache import cache
 from django.shortcuts import redirect
 
 
-def fetch_books():
-    cached_books = cache.get("all_books")
-    if cached_books:
-        print(f"CACHE HIT: Found {len(cached_books)} books in cache")
-        return cached_books
+def fetch_books(page=1, per_page=100):
+    """
+    Fetch books with pagination
+    page: Which page to fetch (starting from 1)
+    per_page: How many books per page (default 100)
+    """
+    cache_key = f"books_page_{page}"
+    cached_page = cache.get(cache_key)
     
-    print("CACHE MISS: Fetching from API")
+    if cached_page:
+        print(f"CACHE HIT: Found page {page} in cache with {len(cached_page['books'])} books")
+        return cached_page
     
-    books = []
+    print(f"CACHE MISS: Fetching page {page} from API")
+    
     API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
     base_url = "https://api.bigbookapi.com/search-books"
+    
+    offset = (page - 1) * per_page + 1
     
     try:
         params = {
             'api-key': API_KEY,
             'query': 'all',
-            'number': 100,
-            'offset': 1
+            'number': per_page,
+            'offset': offset
         }
         
         response = requests.get(base_url, params=params, timeout=50)
         if response.status_code == 200:
             data = response.json()
-            print(f"Parsed JSON data: {data}")
-            # return just the books list with flattened structure, easy to run over
             books = [book[0] for book in data.get('books', [])]
-            if books:
-                cache.set('all_books', books, 86400)
-            return books
+            
+            result = {
+                'books': books,
+                'total': data.get('available', 0),
+                'page': page,
+                'per_page': per_page,
+                'total_pages': (data.get('available', 0) + per_page - 1) // per_page
+            }
+            
+            # cache this page for 24 hours
+            cache.set(cache_key, result, 86400)
+            return result
         else:
             print(f"Error fetching books: {response.status_code}")
             
@@ -50,7 +65,8 @@ def fetch_books():
     except Exception as e:
         print(f"Unexpected error: {str(e)}")
     
-    return books
+    # return empty result if something went wrong
+    return {'books': [], 'total': 0, 'page': page, 'per_page': per_page, 'total_pages': 0}
 
 def fetch_book_details(book_id):
     cached_book = cache.get(f"book_{book_id}")
@@ -85,11 +101,12 @@ def fetch_book_details(book_id):
 
     return None
 
-# Create your views here.
+# create your views here.
 
 def index(request):
-    books = fetch_books()
-    firstEight = books[:8]
+    # fetch the first page with 100 books but only show the first 8
+    books_data = fetch_books(page=1, per_page=100)
+    firstEight = books_data['books'][:8]
     return render(request, "index.html", {
         "books": firstEight
     })
@@ -188,11 +205,18 @@ def shelf(request):
     }) 
 
 def browse(request):
-    books = fetch_books()
+    # Get the requested page number from query parameters
+    page = int(request.GET.get('page', 1))
+    per_page = 100  # Show 100 books per page
+    
+    books_data = fetch_books(page=page, per_page=per_page)
+    
     return render(request, "browse.html", {
-        "books": books
+        "books": books_data['books'],
+        "current_page": books_data['page'],
+        "total_pages": books_data['total_pages'],
+        "total_books": books_data['total'],
     })
-
 
 def book(request, book_id):
     book_details = fetch_book_details(book_id)
