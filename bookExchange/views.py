@@ -216,6 +216,7 @@ def browse(request):
         "current_page": books_data['page'],
         "total_pages": books_data['total_pages'],
         "total_books": books_data['total'],
+        "hide_loader": False
     })
 
 def book(request, book_id):
