@@ -44,6 +44,31 @@
 			<div class="nav-item">
 				<a class="nav-link" href="{% url 'register' %}">REGISTER</a>
 			</div>
+			<!-- pagination -->
+			{% if current_page or total_pages %}
+				<div class="pagination-container">
+					<div class="pagination">
+			{% if current_page > 1 %}
+				<a
+					href="?page={{ current_page|add:'-1' }}"
+					class="pagination-button prev-button"
+				>
+				◄
+				</a>
+			{% endif %}
+
+
+		{% if current_page < total_pages %}
+		<a
+			href="?page={{ current_page|add:'1' }}"
+			class="pagination-button next-button"
+		>
+		►
+		</a>
+		{% endif %}
+	</div>
+</div>
+{% endif %}
 		</div>
 		<!-- line to inject child components -->
 		<script src="{% static 'scripts/scripts.js' %}"></script>

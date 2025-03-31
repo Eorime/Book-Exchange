@@ -925,3 +925,27 @@ a {
 	font-size: 0.8em;
 	padding: 2px 8px;
 }
+
+.pagination-container {
+	margin-top: auto;
+}
+
+.pagination {
+	margin-top: 80vh;
+	display: flex;	
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+}
+
+.pagination-button {
+	align-self: center;
+	font-weight: 550;
+	color: #6565f7;
+	font-size: 20px;
+	transition: color 0.2s ease-in-out;
+}
+
+.pagination-button:hover {
+	color: rgb(26, 26, 184);
+}
