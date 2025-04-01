@@ -1,13 +1,18 @@
-{% extends "layout.html" %} {% block body %}
+{% extends "layout.html" %} 
+{% block body %}
 <div class="browse-container">
 	{% for book in books %}
 	<a href="/book/{{book.id}}" class="book-link">
 		<div class="browse-book">
 			<div class="browse-a-container">
-				<!-- <p>{{book.id}}</p> aqdan gaigzavnos request ro am idze dafetchos -->
 				<span class="browse-book-title">
 					<strong>{{ book.title|upper }}</strong>
 				</span>
+			</div>
+			<img class="browse-book-image" src="{{book.image}}" />
+			<div
+				class="browse-b-container"
+			>
 				<svg
 					viewBox="0 0 14 20"
 					class="bookmark"
@@ -17,10 +22,6 @@
 				>
 					<path d="M2 2 H12 V15 L7 11 L2 15 V2 Z" />
 				</svg>
-			</div>
-			<img class="browse-book-image" src="{{book.image}}" />
-			<div class="browse-b-container">
-				<!-- <p>{{book.subtitle}}</p> -->
 				<svg
 					class="lend"
 					width="36"
@@ -70,7 +71,3 @@
 </div>
 
 {% endblock %}
-
-<!-- iqneba shelfshi ori tipi, erti iqneba lend (wignebi romlebic shegidzlia atxovo) da favorites(romlebic ginda ro itxovo) -->
-<!--favoritestvis obviously guli iqneba, da lendistvis rame icon iqneba mosafiqrebeli-->
-<!--actual favorites shelfshi ar iqneba, ragac personaluri saiti araa this is solely to lend and borrow books-->

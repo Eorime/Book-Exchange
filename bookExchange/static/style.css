@@ -392,6 +392,7 @@ a {
 }
 
 .browse-book {
+	position: relative;
 	border-right: 1px solid rgb(101, 101, 247);
 	border-bottom: 1px solid rgb(101, 101, 247);
 	padding: 70px;
@@ -447,20 +448,19 @@ a {
 .browse-b-container {
 	position: absolute;
 	display: flex;
-	flex-direction: row;
-	left: 20px;
-	right: 20px;
-	bottom: 0;
+	flex-direction: row !important;
+	bottom: 15px;
+	width: 80%;
 	justify-content: space-between;
 	transition: 0.2s ease-in-out color;
 	color: rgb(101, 101, 247);
+	align-items: center;
 }
 
 .bookmark {
-	position: absolute;
 	right: 0;
-	width: 22px;
-	height: 22px;
+	width: 26px;
+	height: 26px;
 	z-index: 3;
 
 	@media (max-width: 600px) {
@@ -490,7 +490,6 @@ a {
 	height: 24px;
 	z-index: 3;
 	cursor: pointer;
-	position: absolute;
 	right: 4px;
 	bottom: 15px;
 }
@@ -932,7 +931,7 @@ a {
 
 .pagination {
 	margin-top: 80vh;
-	display: flex;	
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 10px;
