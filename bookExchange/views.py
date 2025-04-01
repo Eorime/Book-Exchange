@@ -9,16 +9,16 @@ import requests
 import json
 from django.core.cache import cache
 from django.shortcuts import redirect
-
+import re
 
 def fetch_books(page=1, per_page=100):
-    """
-    Fetch books with pagination
-    page: Which page to fetch (starting from 1)
-    per_page: How many books per page (default 100)
-    """
+    import re  # Add import inside the function to ensure it's available
+    
     cache_key = f"books_page_{page}"
-    cached_page = cache.get(cache_key)
+    
+    # use None for testing, then switch back to using cache
+    cached_page = None  # For testing
+    # cached_page = cache.get(cache_key)  # Uncomment this for production
     
     if cached_page:
         print(f"CACHE HIT: Found page {page} in cache with {len(cached_page['books'])} books")
@@ -29,23 +29,73 @@ def fetch_books(page=1, per_page=100):
     API_KEY = "20ce11f3bdfd4e24ae5a07bc3311bb8e"
     base_url = "https://api.bigbookapi.com/search-books"
     
+    # request more books to ensure we have enough after filtering
+    adjusted_per_page = per_page * 5
     offset = (page - 1) * per_page + 1
     
     try:
         params = {
             'api-key': API_KEY,
             'query': 'all',
-            'number': per_page,
+            'number': adjusted_per_page,
             'offset': offset
         }
         
         response = requests.get(base_url, params=params, timeout=50)
         if response.status_code == 200:
             data = response.json()
-            books = [book[0] for book in data.get('books', [])]
+            all_books = [book[0] for book in data.get('books', [])]
+            
+            # filter out books with similar titles
+            unique_books = []
+            title_info = []  # store normalized titles for comparison
+            
+            for book in all_books:
+                title = book.get('title', '').strip()
+                if not title:
+                    continue
+                
+                # normalize the title for comparison
+                normalized_title = title.lower()
+                normalized_title = re.sub(r'\s+a\s+memoir(\s+of.*)?$', '', normalized_title)
+                normalized_title = re.sub(r'\s+a\s+novel$', '', normalized_title)
+                normalized_title = re.sub(r'[:;-]\s+.*$', '', normalized_title)
+                normalized_title = re.sub(r'\s+(special|anniversary|revised|expanded|illustrated)\s+edition$', '', normalized_title)
+                normalized_title = re.sub(r'[^\w\s]', '', normalized_title)
+                normalized_title = re.sub(r'\s+', ' ', normalized_title).strip()
+                
+                # check for similar titles
+                is_duplicate = False
+                for existing_title, _ in title_info:
+                    # check for exact match
+                    if normalized_title == existing_title:
+                        is_duplicate = True
+                        break
+                    
+                    # check substring relationships (only if substantial overlap)
+                    longer = max(normalized_title, existing_title, key=len)
+                    shorter = min(normalized_title, existing_title, key=len)
+                    
+                    # ensure the shorter title is at least 4 characters and comprises 
+                    # a significant portion of the longer title
+                    if len(shorter) > 3 and shorter in longer:
+                        # Calculate overlap percentage
+                        overlap_ratio = len(shorter) / len(longer)
+                        # if overlap is significant (over 60%), consider it a duplicate
+                        if overlap_ratio > 0.6:
+                            is_duplicate = True
+                            break
+                
+                if not is_duplicate:
+                    title_info.append((normalized_title, title))
+                    unique_books.append(book)
+                    
+                    # break if we've reached the desired number of books
+                    if len(unique_books) >= per_page:
+                        break
             
             result = {
-                'books': books,
+                'books': unique_books[:per_page],
                 'total': data.get('available', 0),
                 'page': page,
                 'per_page': per_page,
@@ -57,7 +107,7 @@ def fetch_books(page=1, per_page=100):
             return result
         else:
             print(f"Error fetching books: {response.status_code}")
-            
+        
     except requests.RequestException as e:
         print(f"Request error: {str(e)}")
     except json.JSONDecodeError as e:
