@@ -477,6 +477,11 @@ a {
 	stroke: #fff;
 }
 
+.browse-book:hover .lend rect {
+	stroke: #fff;
+	fill: #6565F7;
+}
+
 .bookmark:hover {
 	cursor: pointer;
 }
@@ -504,6 +509,7 @@ a {
 
 .lend:hover circle {
 	fill: #6565f7;
+	stroke: #fff;
 }
 
 .lend:hover path {
