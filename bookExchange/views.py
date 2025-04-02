@@ -12,13 +12,10 @@ from django.shortcuts import redirect
 import re
 
 def fetch_books(page=1, per_page=100):
-    import re  # Add import inside the function to ensure it's available
-    
     cache_key = f"books_page_{page}"
     
     # use None for testing, then switch back to using cache
-    cached_page = None  # For testing
-    # cached_page = cache.get(cache_key)  # Uncomment this for production
+    cached_page = cache.get(cache_key)  # Uncomment this for production
     
     if cached_page:
         print(f"CACHE HIT: Found page {page} in cache with {len(cached_page['books'])} books")

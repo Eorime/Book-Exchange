@@ -534,10 +534,10 @@ a {
 
 .details-a-top {
 	display: flex;
-	padding-top: 5%;
+	padding-top: 10%;
 	width: 100%;
 	justify-content: space-between;
-	align-items: center;
+	/* align-items: center; */
 }
 
 .details-a-bottom {
@@ -564,8 +564,9 @@ a {
 
 .bookmark-details {
 	/* width: 30px; */
-	height: 30px;
+	height: 38px;
 	z-index: 2;
+	margin-top: 2px;
 }
 
 .bookmark-details path {

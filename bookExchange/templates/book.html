@@ -17,23 +17,23 @@
 					/>
 				</svg>
 			</a>
-			<svg
-				viewBox="0 0 14 20"
-				class="bookmark-details"
-				fill="none"
-				stroke="rgb(101, 101, 247)"
-				stroke-width="1.5"
-			>
-				<path d="M2 2 H12 V15 L7 11 L2 15 V2 Z" />
-			</svg>
+			{% for author in book.authors %} {% if forloop.first %}
+			<span class="author"><strong>{{ author.name }}</strong></span>
+			{% endif %} {% endfor %}
 		</div>
 		<div class="book-image-container">
 			<img src="{{book.image}}" class="book-details-image" />
 		</div>
 		<div class="details-a-bottom">
-			{% for author in book.authors %} {% if forloop.first %}
-			<span class="author">Written by <strong>{{ author.name }}</strong></span>
-			{% endif %} {% endfor %}
+			<svg
+			viewBox="0 0 14 20"
+			class="bookmark-details"
+			fill="none"
+			stroke="rgb(101, 101, 247)"
+			stroke-width="1.1"
+		>
+			<path d="M2 2 H12 V15 L7 11 L2 15 V2 Z" />
+		</svg>
 			<svg
 				class="lend-details"
 				width="36"
