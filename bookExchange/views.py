@@ -14,8 +14,7 @@ import re
 def fetch_books(page=1, per_page=100):
     cache_key = f"books_page_{page}"
     
-    # use None for testing, then switch back to using cache
-    cached_page = cache.get(cache_key)  # Uncomment this for production
+    cached_page = cache.get(cache_key) 
     
     if cached_page:
         print(f"CACHE HIT: Found page {page} in cache with {len(cached_page['books'])} books")
@@ -243,7 +242,8 @@ def shelf(request):
             user.save()
 
         return render(request, "shelf.html", {
-            "user": user
+            "user": user,
+            "hide_loader": True,
         })
     
     return render(request, "shelf.html", {

@@ -955,3 +955,57 @@ a {
 .pagination-button:hover {
 	color: rgb(26, 26, 184);
 }
+
+.submit-btn {
+	font-weight: 600;
+	color: rgb(101, 101, 247);
+	position: relative;
+	background-color: #fff;
+	border: 2px solid rgb(101, 101, 247);
+	cursor: pointer;
+	left: 73%;
+	padding: 5px;
+	display: inline-block;
+	transition: 0.3s ease-in-out all;
+}
+
+.submit-btn:hover {
+	background-color: rgb(101, 101, 247);
+	color: #fff;
+}
+
+.delete-image-btn {
+	font-weight: 600;
+	color: rgb(101, 101, 247);
+	position: relative;
+	background-color: #fff;
+	border: 2px solid rgb(101, 101, 247);
+	cursor: pointer;
+	left: 73%;
+	padding: 5px;
+	display: inline-block;
+	transition: 0.3s ease-in-out all;
+}
+
+.delete-image-btn:hover {
+	background-color: rgb(101, 101, 247);
+	color: #fff;
+}
+
+.submit-image-btn {
+	font-weight: 600;
+	color: rgb(101, 101, 247);
+	position: relative;
+	background-color: #fff;
+	border: 2px solid rgb(101, 101, 247);
+	cursor: pointer;
+	left: 73%;
+	padding: 5px;
+	display: inline-block;
+	transition: 0.3s ease-in-out all;
+}
+
+.submit-image-btn:hover {
+	background-color: rgb(101, 101, 247);
+	color: #fff;
+}
