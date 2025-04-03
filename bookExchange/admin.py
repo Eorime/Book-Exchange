@@ -7,18 +7,20 @@ from django.db import transaction
 class CustomUserAdmin(BaseUserAdmin):
     @transaction.atomic
     def delete_model(self, request, obj):
-        # delete admin log entries first
+    # Delete admin log entries related to this user
+        from django.contrib.admin.models import LogEntry
         LogEntry.objects.filter(user_id=obj.id).delete()
-        
-        # delete related objects
-        CanLend.objects.filter(user=obj).delete()
-        WillBorrow.objects.filter(user=obj).delete()
-        
-        # clear many-to-many relationships
+    
+    # Clear permissions and groups
         obj.groups.clear()
         obj.user_permissions.clear()
-        
-        # delete the user
+    
+    # Delete related book records
+        from .models import CanLend, WillBorrow
+        CanLend.objects.filter(user=obj).delete()
+        WillBorrow.objects.filter(user=obj).delete()
+    
+    # Finally delete the user
         obj.delete()
 
     @transaction.atomic

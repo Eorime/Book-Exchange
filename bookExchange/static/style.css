@@ -957,7 +957,7 @@ a {
 }
 
 .submit-btn {
-	font-weight: 600;
+	font-weight: 550;
 	color: rgb(101, 101, 247);
 	position: relative;
 	background-color: #fff;
@@ -975,7 +975,7 @@ a {
 }
 
 .delete-image-btn {
-	font-weight: 600;
+	font-weight: 500;
 	color: rgb(101, 101, 247);
 	position: relative;
 	background-color: #fff;
@@ -993,7 +993,7 @@ a {
 }
 
 .submit-image-btn {
-	font-weight: 600;
+	font-weight: 500;
 	color: rgb(101, 101, 247);
 	position: relative;
 	background-color: #fff;
