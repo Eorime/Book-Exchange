@@ -1,5 +1,4 @@
-{% extends "layout.html" %} 
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <div class="browse-container">
 	{% for book in books %}
 	<a href="/book/{{book.id}}" class="book-link">
@@ -10,9 +9,7 @@
 				</span>
 			</div>
 			<img class="browse-book-image" src="{{book.image}}" />
-			<div
-				class="browse-b-container"
-			>
+			<div class="browse-b-container">
 				<svg
 					viewBox="0 0 14 20"
 					class="bookmark"
@@ -36,7 +33,7 @@
 						width="26"
 						height="31"
 						rx="1"
-						fill="white"
+						fill="#f3f1ed"
 						stroke="#6565F7"
 						stroke-width="2.5"
 					/>
@@ -46,7 +43,7 @@
 						width="24"
 						height="33"
 						rx="1"
-						fill="white"
+						fill="#f3f1ed"
 						stroke="#6565F7"
 						stroke-width="2.5"
 					/>
@@ -54,7 +51,7 @@
 						cx="24.5"
 						cy="28.5"
 						r="10.5"
-						fill="white"
+						fill="#f3f1ed"
 						stroke="#6565F7"
 						stroke-width="2.5"
 					/>

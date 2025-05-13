@@ -2,9 +2,10 @@
 
 html {
 	cursor: none;
+	background-color: #f3f1ed;
 	::selection {
 		background-color: rgb(101, 101, 247);
-		color: #fff;
+		color: #f3f1ed;
 	}
 }
 
@@ -25,7 +26,7 @@ body {
 	top: 0;
 	left: 0;
 	z-index: 9999;
-	background-color: #fff;
+	background-color: #f3f1ed;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -89,7 +90,7 @@ body {
 
 	border: 2.8px solid rgb(101, 101, 247);
 
-	background-color: #fff;
+	background-color: #f3f1ed;
 	background-image: repeating-linear-gradient(
 		rgb(101, 101, 247) 0 0.125rem,
 		hsla(223, 10%, 10%, 0) 0.125rem 0.5rem
@@ -434,15 +435,15 @@ a {
 }
 
 .browse-book:hover .browse-a-container {
-	color: #fff;
+	color: #f3f1ed;
 }
 
 .browse-book:hover .browse-b-container {
-	color: #fff;
+	color: #f3f1ed;
 }
 
 .browse-book:hover ~ .mouse-circle {
-	background-color: white;
+	background-color: #f3f1ed;
 }
 
 .browse-b-container {
@@ -474,12 +475,12 @@ a {
 }
 
 .browse-book:hover .bookmark path {
-	stroke: #fff;
+	stroke: #f3f1ed;
 }
 
 .browse-book:hover .lend rect {
-	stroke: #fff;
-	fill: #6565F7;
+	stroke: #f3f1ed;
+	fill: #6565f7;
 }
 
 .bookmark:hover {
@@ -487,7 +488,7 @@ a {
 }
 
 .bookmark:hover path {
-	fill: #fff;
+	fill: #f3f1ed;
 }
 
 .lend {
@@ -509,11 +510,11 @@ a {
 
 .lend:hover circle {
 	fill: #6565f7;
-	stroke: #fff;
+	stroke: #f3f1ed;
 }
 
 .lend:hover path {
-	fill: #fff;
+	fill: #f3f1ed;
 }
 
 .book-details-container {
@@ -620,7 +621,7 @@ a {
 }
 
 .lend-details:hover path {
-	fill: #fff;
+	fill: #f3f1ed;
 }
 
 .author {
@@ -856,13 +857,13 @@ a {
 
 .custom-image-button:hover {
 	background-color: rgb(101, 101, 247);
-	color: #fff;
+	color: #f3f1ed;
 }
 
 .input-button {
 	width: 100%;
 	border: 2px solid rgb(101, 101, 247);
-	background-color: white;
+	background-color: #f3f1ed;
 	color: rgb(101, 101, 247);
 	font-size: 1.3em;
 	padding: 11px;
@@ -872,7 +873,7 @@ a {
 }
 
 .input-button:hover {
-	color: #fff;
+	color: #f3f1ed;
 	background-color: rgb(101, 101, 247);
 }
 
@@ -916,7 +917,7 @@ a {
 
 .username-input:focus {
 	opacity: 1;
-	background: white;
+	background: #f3f1ed;
 	outline: 2px solid #4a90e2;
 	z-index: 2;
 }
@@ -960,7 +961,7 @@ a {
 	font-weight: 550;
 	color: rgb(101, 101, 247);
 	position: relative;
-	background-color: #fff;
+	background-color: #f3f1ed;
 	border: 2px solid rgb(101, 101, 247);
 	cursor: pointer;
 	left: 73%;
@@ -971,14 +972,14 @@ a {
 
 .submit-btn:hover {
 	background-color: rgb(101, 101, 247);
-	color: #fff;
+	color: #f3f1ed;
 }
 
 .delete-image-btn {
 	font-weight: 500;
 	color: rgb(101, 101, 247);
 	position: relative;
-	background-color: #fff;
+	background-color: #f3f1ed;
 	border: 2px solid rgb(101, 101, 247);
 	cursor: pointer;
 	left: 73%;
@@ -989,14 +990,14 @@ a {
 
 .delete-image-btn:hover {
 	background-color: rgb(101, 101, 247);
-	color: #fff;
+	color: #f3f1ed;
 }
 
 .submit-image-btn {
 	font-weight: 500;
 	color: rgb(101, 101, 247);
 	position: relative;
-	background-color: #fff;
+	background-color: #f3f1ed;
 	border: 2px solid rgb(101, 101, 247);
 	cursor: pointer;
 	left: 73%;
@@ -1007,5 +1008,5 @@ a {
 
 .submit-image-btn:hover {
 	background-color: rgb(101, 101, 247);
-	color: #fff;
+	color: #f3f1ed;
 }
