@@ -396,8 +396,8 @@ a {
 	position: relative;
 	border-right: 1px solid rgb(101, 101, 247);
 	border-bottom: 1px solid rgb(101, 101, 247);
-	padding: 70px;
-	padding-bottom: 60px;
+	padding: 60px;
+	padding-bottom: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -450,8 +450,8 @@ a {
 	position: absolute;
 	display: flex;
 	flex-direction: row !important;
-	bottom: 17px;
-	width: 82.5%;
+	bottom: 10px;
+	width: 90%;
 	justify-content: space-between;
 	transition: 0.2s ease-in-out color;
 	color: rgb(101, 101, 247);
@@ -545,7 +545,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	width: 25vw;
+	/* width: 25vw; */
 	min-height: 90vh;
 	padding-left: 3%;
 	padding-right: 3%;
@@ -746,15 +746,16 @@ a {
 
 .b-side-left {
 	inset: 0;
-	width: 40%;
+	/* width: 40%; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	color: #6565f7;
+	margin-right: 2rem;
 }
 
 .b-side-right {
-	width: 60%;
+	width: 70%;
 	right: 0;
 	color: #6565f7;
 	overflow-y: auto;
